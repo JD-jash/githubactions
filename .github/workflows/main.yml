@@ -48,7 +48,7 @@ jobs:
       - name: Register Task Definition
         run: |
           aws ecs register-task-definition \
-            --family nginx-task \
+            --family nginx-ta \
             --container-definitions '[{"name":"shazam","image":"484907495344.dkr.ecr.ap-southeast-1.amazonaws.com/jdecr","portMappings":[{"containerPort":80}],"memoryReservation":128}]'
      # Step to create ECS service
       - name: Create ECS Service
@@ -56,7 +56,7 @@ jobs:
           aws ecs create-service \
             --cluster nginx-cluster \
             --service-name nginx-ser \
-            --task-definition nginx-task \
+            --task-definition nginx-ta \
             --desired-count 1 \
             --launch-type EC2 \
             --region ${{ env.AWS_REGION }}
